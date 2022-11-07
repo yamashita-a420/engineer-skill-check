@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2022_11_05_033920) do
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "news_posting_auth"
+    t.boolean "news_posting_auth", default: false, null: false
     t.index ["department_id"], name: "index_employees_on_department_id"
     t.index ["office_id"], name: "index_employees_on_office_id"
   end
