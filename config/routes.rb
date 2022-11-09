@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :dashboard, only: :index
-  resources :articles
+  resources :articles, only: %i(index new create edit update destroy)
   root 'employees#index'
 
   get    '/login',   to: 'sessions#new'
