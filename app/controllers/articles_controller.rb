@@ -47,7 +47,7 @@ class ArticlesController < ApplicationController
   end
 
   def sort_column
-    params[:sort] ? params[:sort] : 'number'
+    params[:sort] ? params[:sort] : 'created_at'
   end
 
   def sort_direction
