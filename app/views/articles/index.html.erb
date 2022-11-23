@@ -17,7 +17,7 @@
     <tbody>
     <% @articles.each do |article| %>
       <tr class="article">
-        <th class="name"><%= article.title %></th>
+        <th class="name"><%= link_to article.title, article_path(article) %></th>
         <th class="created_at"><%= article.created_at %></th>
         <% if article.author == current_user.id %>
           <th class="btn_th"><%= link_to '編集', edit_article_path(article), class: 'btn' %></th>
