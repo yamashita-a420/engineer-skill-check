@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: %i(edit update destroy)
+  before_action :set_article, only: %i(show edit update destroy)
 
   def index
     @articles = Article.active.order("#{sort_column} #{sort_direction}")
@@ -16,6 +16,8 @@ class ArticlesController < ApplicationController
       redirect_to employees_url, notice: "記事「#{@article.title}」を登録しました。"
     end
   end
+
+  def show; end
 
   def edit; end
 
