@@ -1,12 +1,4 @@
 <div class="article_form">
-  <% if article.errors.present? %>
-    <ul>
-      <% article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
-
   <%= form_with model: article, local: true do |f| %>
     <%= f.submit '保存' %>
 
