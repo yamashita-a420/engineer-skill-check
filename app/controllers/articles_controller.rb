@@ -13,7 +13,10 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      redirect_to employees_url, notice: "記事「#{@article.title}」を登録しました。"
+      redirect_to articles_url, success: t('.success', item: @article.title)
+    else
+      flash.now[:danger] = t('.fail')
+      render :new
     end
   end
 
