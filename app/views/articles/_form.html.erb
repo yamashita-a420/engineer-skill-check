@@ -19,5 +19,7 @@
       <%= f.text_field :content %>
     </div>
 
+    <%= f.hidden_field :author, :value => current_user.id %>
+
   <% end %>
 </div>
