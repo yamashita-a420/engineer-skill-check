@@ -6,8 +6,9 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :danger
 
   private
-    def user_logged_in?
-      return if logged_in?
-      redirect_to login_path
-    end
+
+  def user_logged_in?
+    return if logged_in?
+    redirect_to login_path
+  end
 end
