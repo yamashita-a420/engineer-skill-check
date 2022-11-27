@@ -13,6 +13,7 @@
     <% if logged_in? %>
       <%= render 'layouts/header' %>
     <% end %>
+    <%= render 'shared/flash_message' %>
     <div class='container'>
       <%= yield %>
     </div>

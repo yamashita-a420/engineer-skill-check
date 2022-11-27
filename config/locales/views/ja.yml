@@ -1,0 +1,8 @@
+ja:
+  articles:
+    create:
+      success: "記事「%{item}」を登録しました"
+      fail: 記事の作成に失敗しました
+  errors:
+    messages:
+      blank: が入力されていません

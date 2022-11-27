@@ -1,8 +1,4 @@
 <div class="article_index">
-  <% if flash.notice.present? %>
-    <p><%= flash.notice %></p>
-  <% end %>
-
   <% if current_user.employee_info_manage_auth %>
     <p class="new_article"><%= link_to '新規追加', new_article_path, class: 'btn' %></p>
   <% end %>
