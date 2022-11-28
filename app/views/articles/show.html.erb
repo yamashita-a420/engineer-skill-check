@@ -1,2 +1,5 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+<%= button_to '一覧へ戻る', articles_url, method: :get %>
+<div>
+  <h3>タイトル <%= @article.title %></h3>
+  <p><%= @article.content %></p>
+</div>
