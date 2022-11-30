@@ -1,26 +1,26 @@
 <div class="article_index">
   <% if current_user.employee_info_manage_auth %>
-    <p class="new_article"><%= link_to '新規追加', new_article_path, class: 'btn' %></p>
+    <p class="new_article text-end mt-3"><%= link_to '新規追加', new_article_path, class: 'btn btn-primary' %></p>
   <% end %>
 
-  <table class="article_table">
+  <table class="table table-hover align-middle">
     <thead>
       <tr>
-        <th class="title">タイトル</th>
-        <th><%= sort_order "created_at", "公開日" %></th>
+        <th scope="col">タイトル</th>
+        <th scope="col"><%= sort_order "created_at", "公開日" %></th>
       </tr>
     </thead>
     <tbody>
-    <% @articles.each do |article| %>
-      <tr class="article">
-        <th class="name"><%= link_to article.title, article_path(article) %></th>
-        <th class="created_at"><%= article.created_at %></th>
-        <% if article.author == current_user.id %>
-          <th class="btn_th"><%= link_to '編集', edit_article_path(article), class: 'btn' %></th>
-          <th class="btn_th"><%= link_to '削除', article, method: :delete, data: { confirm: "記事「#{article.title}」を削除します。よろしいですか？" }, class: 'btn' %></th>
-        <% end %>
-      </tr>
-    <% end %>
+      <% @articles.each do |article| %>
+        <tr class="article">
+          <td class="text-wrap"><%= link_to article.title, article_path(article) %></td>
+          <td class="created_at"><%= l article.created_at, format: :short %></td>
+          <% if article.author == current_user.id %>
+            <td class="btn_th"><%= link_to '編集', edit_article_path(article), class: 'btn btn-success' %></td>
+            <td class="btn_th"><%= link_to '削除', article, method: :delete, data: { confirm: "記事「#{article.title}」を削除します。よろしいですか？" }, class: 'btn btn-danger' %></td>
+          <% end %>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
