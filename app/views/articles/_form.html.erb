@@ -1,14 +1,16 @@
 <div class="article_form">
   <%= form_with model: article, local: true do |f| %>
-    <%= f.submit '保存' %>
+    <p class="text-end mt-3">
+      <%= f.submit '保存', class: 'btn btn-primary' %>
+    </p>
 
-    <div class="form_group">
+    <div class="mb-3">
       <%= f.label :title %>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, class: 'form-control' %>
     </div>
 
-    <div class="form_group">
-      <%= f.text_field :content %>
+    <div class="mb-3">
+      <%= f.text_area :content, class: 'form-control' %>
     </div>
 
     <%= f.hidden_field :author, :value => current_user.id %>

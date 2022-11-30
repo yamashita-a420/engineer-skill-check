@@ -1,5 +1,9 @@
-<%= button_to '一覧へ戻る', articles_url, method: :get %>
-<div>
-  <h3>タイトル <%= @article.title %></h3>
-  <p><%= @article.content %></p>
-</div>
+<article>
+  <p class="text-end mt-3">
+    <%= link_to '一覧へ戻る', articles_url, class: 'btn btn-primary' %>
+  </p>
+  <div>
+    <h3>タイトル <%= @article.title %></h3>
+    <p><%= @article.content %></p>
+  </div>
+</article>
