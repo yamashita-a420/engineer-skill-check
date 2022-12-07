@@ -1,0 +1,9 @@
+article
+  p.text-end.mt-3
+    = link_to '一覧へ戻る', articles_url, class: 'btn btn-primary'
+  div
+    h3
+      | タイトル 
+      = @article.title
+  p
+    = @article.content

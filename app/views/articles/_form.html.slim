@@ -1,0 +1,10 @@
+.article_form
+  = form_with model: article, local: true do |f|
+    p.text-end.mt-3
+      = f.submit '保存', class: 'btn btn-primary'
+    .mb-3
+      = f.label :title
+      = f.text_field :title, class: 'form-control'
+    .mb-3
+      = f.text_area :content, class: 'form-control'
+    = f.hidden_field :author, :value => current_user.id
