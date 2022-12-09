@@ -1,0 +1,23 @@
+.article_index
+  - if current_user.employee_info_manage_auth
+    p.new_article.text-end.mt-3
+      = link_to '新規追加', new_article_path, class: 'btn btn-primary'
+  table.table.table-hover.align-middle
+    thead
+      tr
+        th[scope="col"]
+          | タイトル
+        th[scope="col"]
+          = sort_order "created_at", "公開日"
+    tbody
+      - @articles.each do |article|
+        tr.article
+          td.text-wrap
+            = link_to article.title, article_path(article)
+          td.created_at
+            = l article.created_at, format: :short
+          - if article.author == current_user.id
+            td.btn_th
+              = link_to '編集', edit_article_path(article), class: 'btn btn-success'
+            td.btn_th
+              = link_to '削除', article, method: :delete, data: { confirm: "記事「#{article.title}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
