@@ -2,7 +2,9 @@ class Employee < ApplicationRecord
   belongs_to :office
   belongs_to :department
   has_many :profiles
-  has_many :articles, foreign_key: 'author'
+  has_many(:articles,
+           -> { { foreign_key: 'author' } },
+           inverse_of: :employee)
 
   validates :number, presence: true, uniqueness: true
   validates :last_name, presence: true
