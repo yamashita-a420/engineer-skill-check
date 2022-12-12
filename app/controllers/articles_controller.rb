@@ -1,13 +1,17 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: %i(show edit update destroy)
+  before_action :set_article, only: %i[show edit update destroy]
 
   def index
     @articles = Article.active.order("#{sort_column} #{sort_direction}")
   end
 
+  def show; end
+
   def new
     @article = Article.new
   end
+
+  def edit; end
 
   def create
     @article = Article.new(article_params)
@@ -20,10 +24,6 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def show; end
-
-  def edit; end
-
   def update
     if @article.update(article_params)
       redirect_to articles_url, notice: "記事「#{@article.title}」を更新しました。"
@@ -34,8 +34,8 @@ class ArticlesController < ApplicationController
 
   def destroy
     ActiveRecord::Base.transaction do
-      now = Time.now
-      @article.update_column(:deleted_at, now)
+      now = Time.current
+      @article.update!(:deleted_at, now)
     end
 
     redirect_to articles_url, notice: "記事「#{@article.title}」を削除しました。"
@@ -52,11 +52,10 @@ class ArticlesController < ApplicationController
   end
 
   def sort_column
-    params[:sort] ? params[:sort] : 'created_at'
+    params[:sort] || 'created_at'
   end
 
   def sort_direction
-    params[:direction] ? params[:direction] : 'asc'
+    params[:direction] || 'asc'
   end
-
 end

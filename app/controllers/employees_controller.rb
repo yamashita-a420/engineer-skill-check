@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
-  before_action :set_employee, only: %i(edit update destroy)
-  before_action :set_form_option, only: %i(new create edit update)
+  before_action :set_employee, only: %i[edit update destroy]
+  before_action :set_form_option, only: %i[new create edit update]
 
   def index
     @employees = Employee.active.order("#{sort_column} #{sort_direction}")
@@ -9,6 +9,8 @@ class EmployeesController < ApplicationController
   def new
     @employee = Employee.new
   end
+
+  def edit; end
 
   def create
     @employee = Employee.new(employee_params)
@@ -20,8 +22,6 @@ class EmployeesController < ApplicationController
     end
   end
 
-  def edit; end
-
   def update
     if @employee.update(employee_params)
       redirect_to employees_url, notice: "社員「#{@employee.last_name} #{@employee.first_name}」を更新しました。"
@@ -32,9 +32,9 @@ class EmployeesController < ApplicationController
 
   def destroy
     ActiveRecord::Base.transaction do
-      now = Time.now
-      @employee.update_column(:deleted_at, now)
-      @employee.profiles.active.first.update_column(:deleted_at, now) if @employee.profiles.active.present?
+      now = Time.current
+      @employee.update!(:deleted_at, now)
+      @employee.profiles.active.first.update!(:deleted_at, now) if @employee.profiles.active.present?
     end
 
     redirect_to employees_url, notice: "社員「#{@employee.last_name} #{@employee.first_name}」を削除しました。"
@@ -47,7 +47,7 @@ class EmployeesController < ApplicationController
   end
 
   def set_employee
-    @employee = Employee.find(params["id"])
+    @employee = Employee.find(params['id'])
   end
 
   def set_form_option
@@ -56,11 +56,10 @@ class EmployeesController < ApplicationController
   end
 
   def sort_column
-    params[:sort] ? params[:sort] : 'number'
+    params[:sort] || 'number'
   end
 
   def sort_direction
-    params[:direction] ? params[:direction] : 'asc'
+    params[:direction] || 'asc'
   end
-
 end
