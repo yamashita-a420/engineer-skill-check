@@ -32,7 +32,7 @@ class EmployeesController < ApplicationController
 
   def destroy
     ActiveRecord::Base.transaction do
-      now = Time.now
+      now = Time.current
       @employee.update_column(:deleted_at, now)
       @employee.profiles.active.first.update_column(:deleted_at, now) if @employee.profiles.active.present?
     end

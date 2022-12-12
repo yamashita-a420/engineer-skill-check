@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     ActiveRecord::Base.transaction do
-      now = Time.now
+      now = Time.current
       @article.update_column(:deleted_at, now)
     end
 
