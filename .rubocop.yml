@@ -10,7 +10,6 @@ AllCops:
     - "lib/**/*"
     - "spec/**/*"
     - "config/**/*"
-    - "app/validators/attachment_validator.rb"
     - "node_modules/**/*"
     - "Gemfile"
   DisplayCopNames: true
