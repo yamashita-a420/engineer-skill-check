@@ -16,16 +16,18 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
 
     if @profile.save
-      redirect_to employees_url, notice: 'プロフィールを登録しました。'
+      redirect_to employees_url, success: t('.success')
     else
+      flash.now[:danger] = t('.fail')
       render :new
     end
   end
 
   def update
     if @profile.update(profile_params)
-      redirect_to employees_url, notice: 'プロフィールを更新しました。'
+      redirect_to employees_url, success: t('.success')
     else
+      flash.now[:danger] = t('.fail')
       render :edit
     end
   end

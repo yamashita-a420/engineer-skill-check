@@ -2,7 +2,14 @@ ja:
   articles:
     create:
       success: "記事「%{item}」を登録しました"
-      fail: 記事の作成に失敗しました
+      fail: 記事の作成に失敗しました。
+  profiles:
+    create:
+      success: プロフィールを登録しました。
+      fail: プロフィールの作成に失敗しました。
+    update:
+      success: プロフィールを更新しました。
+      fail: プロフィールの更新に失敗しました。
   errors:
     messages:
       blank: が入力されていません
