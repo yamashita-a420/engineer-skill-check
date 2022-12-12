@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
 
   def user_logged_in?
     return if logged_in?
+
     redirect_to login_path
   end
 end

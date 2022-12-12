@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
-  before_action :set_employee, only: %i(edit update destroy)
-  before_action :set_form_option, only: %i(new create edit update)
+  before_action :set_employee, only: %i[edit update destroy]
+  before_action :set_form_option, only: %i[new create edit update]
 
   def index
     @employees = Employee.active.order("#{sort_column} #{sort_direction}")
@@ -9,6 +9,8 @@ class EmployeesController < ApplicationController
   def new
     @employee = Employee.new
   end
+
+  def edit; end
 
   def create
     @employee = Employee.new(employee_params)
@@ -19,8 +21,6 @@ class EmployeesController < ApplicationController
       render :new
     end
   end
-
-  def edit; end
 
   def update
     if @employee.update(employee_params)
@@ -47,7 +47,7 @@ class EmployeesController < ApplicationController
   end
 
   def set_employee
-    @employee = Employee.find(params["id"])
+    @employee = Employee.find(params['id'])
   end
 
   def set_form_option
@@ -56,11 +56,10 @@ class EmployeesController < ApplicationController
   end
 
   def sort_column
-    params[:sort] ? params[:sort] : 'number'
+    params[:sort] || 'number'
   end
 
   def sort_direction
-    params[:direction] ? params[:direction] : 'asc'
+    params[:direction] || 'asc'
   end
-
 end
