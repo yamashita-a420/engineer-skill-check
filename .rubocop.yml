@@ -3,4 +3,63 @@ require:
   - rubocop-rspec
 
 AllCops:
+  Exclude:
+    - "vendor/**/*"
+    - "db/**/*"
+    - "bin/**/*"
+    - "lib/**/*"
+    - "spec/**/*"
+    - "config/**/*"
+    - "app/validators/attachment_validator.rb"
+    - "node_modules/**/*"
+    - "Gemfile"
+  DisplayCopNames: true
   NewCops: enable
+
+Rails:
+  Enabled: true
+
+Layout/LineLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/ClassLength:
+  CountComments: false
+  Max: 300
+
+Metrics/CyclomaticComplexity:
+  Max: 30
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 30
+
+Naming/AccessorMethodName:
+  Exclude:
+    - "app/controllers/**/*"
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/Lambda:
+  EnforcedStyle: literal
+
+Style/WhileUntilModifier:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
