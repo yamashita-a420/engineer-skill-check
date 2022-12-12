@@ -35,7 +35,7 @@ class ArticlesController < ApplicationController
   def destroy
     ActiveRecord::Base.transaction do
       now = Time.current
-      @article.update_column(:deleted_at, now)
+      @article.update!(:deleted_at, now)
     end
 
     redirect_to articles_url, notice: "記事「#{@article.title}」を削除しました。"
